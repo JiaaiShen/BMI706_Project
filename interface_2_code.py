@@ -9,13 +9,13 @@ def load_data():
     return df2
 
 
-interface_2_df = load_data()
+df2 = load_data()
 states = alt.topo_feature(data.us_10m.url, 'states')
 
 
 st.write("## Sex- and Race/Ethnicity-Stratified Chronic Disease Mortality Rates")
 
-year = st.slider('Year', min(interface_2_df['YearStart']), max(interface_2_df['YearStart']), min(interface_2_df['YearStart']))
+year = st.slider('Year', min(df2['YearStart']), max(df2['YearStart']), min(df2['YearStart']))
 subdata = df2[df2["YearStart"] == year]
 
 sex = st.radio('Sex', ('Male','Female','Overall'))
