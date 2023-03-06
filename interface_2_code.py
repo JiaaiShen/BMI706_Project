@@ -22,7 +22,7 @@ sex = st.radio('Sex', ('Male','Female','Overall'))
 subdata = subdata[subdata["Stratification1"] == sex]
 
 chart = alt.Chart(states).mark_geoshape().encode(
-    color='Death:Q'
+    color='Rate:Q'
 ).transform_lookup(
     lookup='id',
     from_=alt.LookupData(subdata, 'LocationID', ['Death'])
