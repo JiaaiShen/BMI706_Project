@@ -24,13 +24,15 @@ subdata = subdata[subdata["Stratification1"] == sex]
 disease = st.selectbox('Disease', df2['Question'].unique())
 subdata = subdata[subdata['Question'] == disease]
 
+domain_min = df2['Rate'].loc[df2['Question'] == disease].loc[df2['Stratification1'] == sex].loc[pd.notna(df2['Rate'])].apply(float).min()
+domain_max = df2['Rate'].loc[df2['Question'] == disease].loc[df2['Stratification1'] == sex].loc[pd.notna(df2['Rate'])].apply(float).max()
+
 chart = alt.Chart(states).mark_geoshape().encode(
-    color=alt.Color('Rate:Q', scale=alt.Scale(scheme='reds', domain=(min(df2['Rate']), max(df2['Rate'])), clamp=True),legend=alt.Legend(title="Age-Adjusted Mortality Rate per 100k")),
-    #color=alt.condition(
-    #    'datum.Rate !== null',
-    #    alt.Color('Rate:Q', scale=alt.Scale(scheme='reds', domain=(min(df2['Rate']), max(df2['Rate'])), clamp=True),legend=alt.Legend(title="Age-Adjusted Mortality Rate per 100k")),
-    #    alt.value('lightgray')
-    #),
+    color=alt.condition(
+        alt.datum.Rate,
+        alt.Color('Rate:Q', scale=alt.Scale(scheme='reds', domain=(domain_min, domain_max), clamp=True)),
+        alt.value('lightgray')
+    ),
     tooltip=[
         alt.Tooltip('LocationDesc:N'),
         alt.Tooltip('Rate:Q')
