@@ -40,7 +40,7 @@ foreground = alt.Chart(states).mark_geoshape().encode(
     height=300
 )
 
-background = alt.Chart(states).mark_geoshape().encode(
+background = alt.Chart(states).mark_geoshape(
     fill = 'lightgray',
     stroke = 'white'
 ).properties(
