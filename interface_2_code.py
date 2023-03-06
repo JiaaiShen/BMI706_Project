@@ -25,7 +25,7 @@ chart = alt.Chart(states).mark_geoshape().encode(
     color='Rate:Q'
 ).transform_lookup(
     lookup='id',
-    from_=alt.LookupData(subdata, 'LocationID', ['Death'])
+    from_=alt.LookupData(subdata, 'LocationID', ['Rate'])
 ).project(
     type='albersUsa'
 ).properties(
