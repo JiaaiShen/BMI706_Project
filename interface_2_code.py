@@ -36,7 +36,7 @@ chart = alt.Chart(states).mark_geoshape().encode(
     height=300
 )
 
-st.altair_chart(chart, use_container_width=True)
-
 if len(subdata) == 0:
     st.write("No data avaiable for given subset.")
+else:
+    st.altair_chart(chart, use_container_width=True)
