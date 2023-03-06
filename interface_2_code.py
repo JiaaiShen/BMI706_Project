@@ -13,13 +13,16 @@ df2 = load_data()
 states = alt.topo_feature(data.us_10m.url, 'states')
 
 
-st.write("## Sex- and Race/Ethnicity-Stratified Chronic Disease Mortality Rates")
+st.write("## Sex- and Race/Ethnicity-Stratified Chronic Disease Mortality Rates, Age-Adjusted")
 
 year = st.slider('Year', min(df2['YearStart']), max(df2['YearStart']), min(df2['YearStart']))
 subdata = df2[df2["YearStart"] == year]
 
 sex = st.radio('Sex', ('Male','Female','Overall'))
 subdata = subdata[subdata["Stratification1"] == sex]
+
+disease = st.selectbox('Disease', df2['Question'].unique())
+subdata = subdata[subdata['Question'] == disease]
 
 chart = alt.Chart(states).mark_geoshape().encode(
     color='Rate:Q'
