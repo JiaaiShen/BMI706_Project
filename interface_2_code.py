@@ -3,7 +3,7 @@ import pandas as pd
 import streamlit as st
 from vega_datasets import data
 
-@st.cache
+@st.cache_data
 def load_data():    
     df2 = pd.read_csv('https://raw.githubusercontent.com/JiaaiShen/BMI706_Project/0861cc067c5080d479c6762fcd94e9cca2b851cf/interface_2_df.csv')
     return df2
