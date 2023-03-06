@@ -5,7 +5,7 @@ from vega_datasets import data
 
 @st.cache_data
 def load_data():    
-    df2 = pd.read_csv('https://raw.githubusercontent.com/JiaaiShen/BMI706_Project/data/0861cc067c5080d479c6762fcd94e9cca2b851cf/interface_2_df_updated.csv')
+    df2 = pd.read_csv('https://github.com/JiaaiShen/BMI706_Project/blob/4dbab360c4292ef68bcba27da8729b80b3c74b7a/data/interface_2_df_updated.csv?raw=true')
     return df2
 
 
