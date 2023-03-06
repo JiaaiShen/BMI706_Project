@@ -24,15 +24,11 @@ subdata = subdata[subdata["Stratification1"] == sex]
 disease = st.selectbox('Disease', df2['Question'].unique())
 subdata = subdata[subdata['Question'] == disease]
 
-chart = alt.Chart(states).mark_geoshape().encode(
-    color=alt.condition(
-        alt.datum.Rate,
-        alt.Color('Rate:Q', scale=alt.Scale(scheme='reds')),
-        alt.value('lightgray')
-    ),
+foreground = alt.Chart(states).mark_geoshape().encode(
+    color=alt.Color('Rate:Q', scale=alt.Scale(scheme='reds', domain=(min(df2['Rate']), max(df2['Rate'])), clamp=True),legend=alt.Legend(title="Age-Adjusted Mortality Rate per 100k")),
     tooltip=[
-        alt.Tooltip('Rate:Q'),
-        alt.Tooltip('LocationDesc:N')
+        alt.Tooltip('LocationDesc:N'),
+        alt.Tooltip('Rate:Q')
     ]
 ).transform_lookup(
     lookup='id',
@@ -44,7 +40,16 @@ chart = alt.Chart(states).mark_geoshape().encode(
     height=300
 )
 
+background = alt.Chart(states).mark_geoshape().encode(
+    fill = 'lightgray',
+    stroke = 'white'
+).properties(
+    title=f"age-adjusted {disease} mortality rates for {sex} in {year}",
+    width=500,
+    height=300
+).project('albersUsa')
+
 if len(subdata) == 0:
     st.write("No data avaiable for given subset.")
 else:
-    st.altair_chart(chart, use_container_width=True)
+    st.altair_chart(foreground+background, use_container_width=True)
