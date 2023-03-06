@@ -9,7 +9,7 @@ def load_data():
     return df2
 
 
-df2 = load_data()
+interface_2_df = load_data()
 states = alt.topo_feature(data.us_10m.url, 'states')
 
 
