@@ -25,7 +25,15 @@ disease = st.selectbox('Disease', df2['Question'].unique())
 subdata = subdata[subdata['Question'] == disease]
 
 chart = alt.Chart(states).mark_geoshape().encode(
-    color='Rate:Q'
+    color=alt.condition(
+        alt.datum.Rate,
+        alt.Color('Rate:Q', scale=alt.Scale(scheme='reds')),
+        alt.value('lightgray')
+    ),
+    tooltip=[
+        alt.Tooltip('Rate:Q'),
+        alt.Tooltip('LocationDesc:N')
+    ]
 ).transform_lookup(
     lookup='id',
     from_=alt.LookupData(subdata, 'LocationID', ['Rate'])
