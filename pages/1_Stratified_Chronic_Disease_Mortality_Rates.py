@@ -43,7 +43,6 @@ width = 600
 height  = 400
 project = 'albersUsa'
 
-# a gray map using as the visualization background
 background = alt.Chart(states
 ).mark_geoshape(
     fill='#aaa',
@@ -54,17 +53,6 @@ background = alt.Chart(states
 ).project(project)
 
 selector = alt.selection_multi(on = 'click', fields = ['State'], empty = 'all')
-
-# chart_base = alt.Chart(states
-#     ).properties( 
-#         width=width,
-#         height=height
-#     ).project(project
-#     ).add_selection(selector
-#     ).transform_lookup(
-#         lookup="id",
-#         from_=alt.LookupData(subdata, "LocationID", ["Rate", 'LocationDesc', 'Question', 'YearStart', 'Stratification1']),
-#     )
 
 rate_scale = alt.Scale(domain=(domain_min, domain_max), scheme='oranges')
 rate_color = alt.Color(field="Rate", type="quantitative", scale=rate_scale)
@@ -89,16 +77,6 @@ chart_rate = alt.Chart(states).mark_geoshape().encode(
 df2_sub = df2.loc[df2['Question'] == disease].loc[df2['Stratification1'] == strat]
 df2_sub_avg = df2_sub.groupby(['YearStart','State'])['Rate'].mean().reset_index().groupby('YearStart')['Rate'].mean().reset_index()
 
-# avgline = alt.Chart(df2_sub_avg).properties(
-#     width = width,
-#     height = height/2
-# ).mark_line(point = True
-# ).encode(
-#     x = 'YearStart:T',
-#     y = alt.Y('Rate', type="quantitative", scale=alt.Scale(domain = [df2_sub_avg['Rate'].min(),df2_sub_avg['Rate'].max() ])),
-#     color = 'orange'
-# )
-
 trendline = alt.Chart(df2_sub).properties(
     width = width,
     height = height/2
@@ -113,30 +91,6 @@ trendline = alt.Chart(df2_sub).properties(
     color=alt.Color(field="State", type="nominal", scale=alt.Scale(scheme = 'oranges'), legend=alt.Legend(symbolLimit=10)),
 )
 
-#alt.condition(selector, alt.value(1), alt.value(0))
-
-
-# chart = alt.Chart(states).mark_geoshape().encode(
-#     color=alt.condition(
-#         alt.datum.Rate,
-#         alt.Color('Rate:Q', scale=alt.Scale(scheme='reds', domain=(domain_min, domain_max), clamp=True)),
-#         alt.value('lightgray')
-#     ),
-#     tooltip=[
-#         alt.Tooltip('LocationDesc:N'),
-#         alt.Tooltip('Rate:Q')
-#     ]
-# ).transform_lookup(
-#     lookup='id',
-#     from_=alt.LookupData(subdata, 'LocationID', ['Rate'])
-# ).project(
-#     type='albersUsa'
-# ).properties(
-#     width=500,
-#     height=300
-# )
-
-
 allstates = df2['LocationDesc'].unique().tolist()
 allstates.remove('United States')
 allstates.sort()
@@ -147,11 +101,11 @@ comparestates = st.multiselect(
     ['Massachusetts','West Virginia', 'Texas', 'California','New York'], max_selections = 5)
 
 col_all = st.columns(5)
-for i in range(len(comparestates)):
-    val = subdata.loc[subdata['LocationDesc'] == comparestates[i]]['Rate']
-    col_all[i].metric(label=comparestates[i], value=val)
 
 if len(subdata) == 0:
     st.write("No data avaiable for given subset.")
 else:
     st.altair_chart(alt.vconcat(background + chart_rate, trendline).resolve_scale(color='shared'), use_container_width=True)
+    for i in range(len(comparestates)):
+        val = subdata.loc[subdata['LocationDesc'] == comparestates[i]]['Rate']
+        col_all[i].metric(label=comparestates[i], value=val)
