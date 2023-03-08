@@ -55,13 +55,13 @@ The main tasks for this exploratory visualization are as follows:
 
 #### Step 2: Sketches
 
-![](/img/bmi706_proj_sketch_final_01.jpg)
-![](/img/bmi706_proj_sketch_final_02.jpg)
-![](/img/bmi706_proj_sketch_final_03.jpg)
-![](/img/bmi706_proj_sketch_final_04.jpg)
-![](/img/bmi706_proj_sketch_final_05.jpg)
-![](/img/bmi706_proj_sketch_final_06.jpg)
-![](/img/bmi706_proj_sketch_final_07.jpg)
+![](img/bmi706_proj_sketch_final_01.jpg)
+![](img/bmi706_proj_sketch_final_02.jpg)
+![](img/bmi706_proj_sketch_final_03.jpg)
+![](img/bmi706_proj_sketch_final_04.jpg)
+![](img/bmi706_proj_sketch_final_05.jpg)
+![](img/bmi706_proj_sketch_final_06.jpg)
+![](img/bmi706_proj_sketch_final_07.jpg)
 
 ###### Potential Visualization Challenges
 
@@ -110,14 +110,14 @@ This view provides users with the convenience to compare the trends and discover
 
 * Health data collection appears to be a source of bias, as some ethnic groups, such as *American Indian or Alaska Native* and *Black, non-Hispanic*, have significantly more missing data than others, like *White, non-Hispanic*. This unequal distribution of missing data has resulted in limited knowledge of the health conditions of underrepresented groups, which could further lead to health outcome disparities. We as public health practitioners will need to be aware of such discrepancy.
 
-![Chronic Disease Mortality Statistics in 2018, Chronic Liver Disease, White, non-Hispanic](/img/img1.png)
+![Chronic Disease Mortality Statistics in 2018, Chronic Liver Disease, White, non-Hispanic](img/img1.png)
 
-![Chronic Disease Mortality Statistics in 2018, Chronic Liver Disease, American Indian or Alaska Native](/img/img2.png)
+![Chronic Disease Mortality Statistics in 2018, Chronic Liver Disease, American Indian or Alaska Native](img/img2.png)
 
 * Based on the visualization, it is generally observed that males are more susceptible to chronic liver disease, oral cavity and pharynx cancer, cancer of the colon and rectum, lung and bronchus cancer, end-stage renal disease, and coronary heart disease. Females are more prone to asthma, while stroke affects both genders at a similar level.
 
-![Chronic Disease Mortality Statistics in 2013, Lung and bronchus cancer, Female](/img/img3.png)
-![Chronic Disease Mortality Statistics in 2013, Lung and brounchus cancer, Male](/img/img4.png)
+![Chronic Disease Mortality Statistics in 2013, Lung and bronchus cancer, Female](img/img3.png)
+![Chronic Disease Mortality Statistics in 2013, Lung and brounchus cancer, Male](img/img4.png)
 
 * add key observation 3
 
