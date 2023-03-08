@@ -12,20 +12,32 @@ def load_data():
 df2 = load_data()
 states = alt.topo_feature(data.us_10m.url, 'states')
 
+df2['Year'] = pd.to_datetime(df2['YearStart'], format='%Y')
+df2['State'] = df2['LocationDesc']
 
-st.write("## Sex- and Race/Ethnicity-Stratified Chronic Disease Mortality Rates, Age-Adjusted")
+st.write("## Stratified Chronic Disease Mortality Rates")
 
-year = st.slider('Year', min(df2['YearStart']), max(df2['YearStart']), 2018)
-subdata = df2[df2["YearStart"] == year]
+with st.sidebar:
+    st.markdown(
+    """
+    ### What now?
+    * Drag the slidebar to select a subset of data based on year of collection
+    * Choose 'Overall' or one of the stratification levels to show statistics of the population that you are interested in
+    * Choose 1 of the 8 chronic diseases that you want to explore
+    """
+    )
 
-sex = st.radio('Sex', ('Male','Female','Overall'))
-subdata = subdata[subdata["Stratification1"] == sex]
+    year = st.slider('Year', min(df2['YearStart']), max(df2['YearStart']), 2018)
+    subdata = df2[df2["YearStart"] == year]
 
-disease = st.selectbox('Disease', df2['Question'].unique())
-subdata = subdata[subdata['Question'] == disease]
+    strat = st.radio('Stratification', ('Overall', 'Male', 'Female','Asian or Pacific Islander', 'Hispanic', 'White, non-Hispanic', 'American Indian or Alaska Native', 'Black, non-Hispanic'), horizontal = True)
+    subdata = subdata[subdata["Stratification1"] == strat]
 
-domain_min = df2['Rate'].loc[df2['Question'] == disease].loc[df2['Stratification1'] == sex].loc[pd.notna(df2['Rate'])].apply(float).min()
-domain_max = df2['Rate'].loc[df2['Question'] == disease].loc[df2['Stratification1'] == sex].loc[pd.notna(df2['Rate'])].apply(float).max()
+    disease = st.selectbox('Disease', df2['Question'].unique())
+    subdata = subdata[subdata['Question'] == disease]
+
+domain_min = df2['Rate'].loc[df2['Question'] == disease].loc[df2['Stratification1'] == strat].loc[pd.notna(df2['Rate'])].apply(float).min()
+domain_max = df2['Rate'].loc[df2['Question'] == disease].loc[df2['Stratification1'] == strat].loc[pd.notna(df2['Rate'])].apply(float).max()
 
 width = 600
 height  = 400
@@ -41,7 +53,7 @@ background = alt.Chart(states
     height=height
 ).project(project)
 
-selector = alt.selection_multi(on = 'click', fields = ['LocationDesc'], empty = 'all')
+selector = alt.selection_multi(on = 'click', fields = ['State'], empty = 'all')
 
 # chart_base = alt.Chart(states
 #     ).properties( 
@@ -60,10 +72,10 @@ rate_color = alt.Color(field="Rate", type="quantitative", scale=rate_scale)
 chart_rate = alt.Chart(states).mark_geoshape().encode(
     color = rate_color,
     opacity = alt.condition(selector, alt.value(1), alt.value(0)),
-    tooltip = ['LocationDesc:N','Rate:Q']
+    tooltip = ['State:N','Rate:Q']
     ).transform_lookup(
         lookup="id",
-        from_=alt.LookupData(subdata, "LocationID", ["Rate", 'LocationDesc', 'Question', 'YearStart', 'Stratification1']),
+        from_=alt.LookupData(subdata, "LocationID", ["Rate", 'State', 'Question', 'YearStart', 'Stratification1']),
     ).project(
      type='albersUsa'
     ).add_selection(selector
@@ -74,8 +86,8 @@ chart_rate = alt.Chart(states).mark_geoshape().encode(
         title=f'Age-adjusted Mortality Rate of {disease}'
         )
 
-df2_sub = df2.loc[df2['Question'] == disease].loc[df2['Stratification1'] == sex]
-df2_sub_avg = df2_sub.groupby(['YearStart','LocationDesc'])['Rate'].mean().reset_index().groupby('YearStart')['Rate'].mean().reset_index()
+df2_sub = df2.loc[df2['Question'] == disease].loc[df2['Stratification1'] == strat]
+df2_sub_avg = df2_sub.groupby(['YearStart','State'])['Rate'].mean().reset_index().groupby('YearStart')['Rate'].mean().reset_index()
 
 # avgline = alt.Chart(df2_sub_avg).properties(
 #     width = width,
@@ -96,9 +108,9 @@ trendline = alt.Chart(df2_sub).properties(
     selector
 ).mark_line(point = True
 ).encode(
-    x='YearStart:T',
+    x='Year:T',
     y=alt.Y('Rate', type="quantitative", scale=alt.Scale(domain=[df2_sub['Rate'].loc[pd.notna(df2['Rate'])].apply(float).min(), df2_sub['Rate'].loc[pd.notna(df2['Rate'])].apply(float).max()])),
-    color=alt.Color(field="LocationDesc", type="nominal", scale=alt.Scale(scheme = 'oranges')),
+    color=alt.Color(field="State", type="nominal", scale=alt.Scale(scheme = 'oranges'), legend=alt.Legend(symbolLimit=10)),
 )
 
 #alt.condition(selector, alt.value(1), alt.value(0))
@@ -124,6 +136,20 @@ trendline = alt.Chart(df2_sub).properties(
 #     height=300
 # )
 
+
+allstates = df2['LocationDesc'].unique().tolist()
+allstates.remove('United States')
+allstates.sort()
+
+comparestates = st.multiselect(
+    'Select up to 5 states to keep track of and compare their statistics',
+    allstates,
+    ['Massachusetts','West Virginia', 'Texas', 'California','New York'], max_selections = 5)
+
+col_all = st.columns(5)
+for i in range(len(comparestates)):
+    val = subdata.loc[subdata['LocationDesc'] == comparestates[i]]['Rate']
+    col_all[i].metric(label=comparestates[i], value=val)
 
 if len(subdata) == 0:
     st.write("No data avaiable for given subset.")
