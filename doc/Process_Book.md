@@ -124,7 +124,7 @@ This view provides users with the convenience to compare the trends and discover
 
 **Interface II**
 
-* Except for the amount of per capita alcohol consumption, we can learn from the map that th residents of the South Central states, such as Louisiana and Mississippi may be at higher risk of certain diseases given their prevalence of each of the other three risk factors. Besides, based on the line chart below, among the four risk factors we take into consideration, the amount of per capita alcohol consumption does not change much over time in nearly all the states, while we can clearly see that there are increasing trend in the prevalence of obesity over time and decreasing trend in the prevalence of smoking or healthy weight.
+* Except for the amount of per capita alcohol consumption, we can learn from the map that th residents of the South Central states, such as Louisiana and Mississippi, may be at higher risk of certain diseases given their prevalence of each of the other three risk factors. Besides, based on the line chart below, among the four risk factors we take into consideration, the amount of per capita alcohol consumption does not change much over time in nearly all the states, while we can clearly see that there are increasing trend in the prevalence of obesity over time and decreasing trend in the prevalence of smoking or healthy weight.
 
 ![Risk Factor Prevalence Statistics in 2016, Smoking](img/img5.png)
 
