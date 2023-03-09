@@ -109,6 +109,8 @@ This view provides users with the convenience to compare the trends and discover
 
 ###### Key Observations
 
+**Interface I**
+
 * Health data collection appears to be a source of bias, as some ethnic groups, such as *American Indian or Alaska Native* and *Black, non-Hispanic*, have significantly more missing data than others, like *White, non-Hispanic*. This unequal distribution of missing data has resulted in limited knowledge of the health conditions of underrepresented groups, which could further lead to health outcome disparities. We as public health practitioners will need to be aware of such discrepancy.
 
 ![Chronic Disease Mortality Statistics in 2018, Chronic Liver Disease, White, non-Hispanic](img/img1.png)
@@ -120,7 +122,13 @@ This view provides users with the convenience to compare the trends and discover
 ![Chronic Disease Mortality Statistics in 2013, Lung and bronchus cancer, Female](img/img3.png)
 ![Chronic Disease Mortality Statistics in 2013, Lung and brounchus cancer, Male](img/img4.png)
 
-* add key observation 3
+**Interface II**
+
+* Except for the amount of per capita alcohol consumption, we can learn from the map that th residents of the South Central states, such as Louisiana and Mississippi may be at higher risk of certain diseases given their prevalence of each of the other three risk factors. Besides, based on the line chart below, among the four risk factors we take into consideration, the amount of per capita alcohol consumption does not change much over time in nearly all the states, while we can clearly see that there are increasing trend in the prevalence of obesity over time and decreasing trend in the prevalence of smoking or healthy weight.
+
+* Based on the two line charts, there exist clear relationships between certain dieases and risk factors. We find that, for instance,
+    - Obesity may be a risk factor for chronic liver disease while for individuals with healthy weight, they may be at lower risk of chronic liver disease.
+    - Smoking may be a risk factor for colorectal cancer, lung and bronchus cancer, melanoma, or coronary heart disease.
 
 ###### Future Work
 * We expect additional data on various types of chronic diseases and risk factors to be included in the visualization to obtain a more holistic view in future updates.
@@ -137,6 +145,7 @@ Joanna Shen
 * Sketch - Converged Solution
 * Final Deliverables - Data Cleaning
 * Final Deliverables - Demo #2 (Chronic Disease vs. Risk Factors)
+* Process Book
 
 Ziqian Liao
 * Project Proposal Writing 
