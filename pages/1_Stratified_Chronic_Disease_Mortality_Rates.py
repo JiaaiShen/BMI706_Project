@@ -12,6 +12,7 @@ def load_data():
 df2 = load_data()
 states = alt.topo_feature(data.us_10m.url, 'states')
 
+df2.loc[df2['Question'] == 'Cancer of the colon and rectum (colorectal), mortality']['Question'] = 'Colorectal cancer'
 df2['Year'] = pd.to_datetime(df2['YearStart'], format='%Y')
 df2['State'] = df2['LocationDesc']
 
