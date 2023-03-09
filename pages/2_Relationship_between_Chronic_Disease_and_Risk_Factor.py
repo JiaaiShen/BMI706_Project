@@ -37,11 +37,13 @@ with st.sidebar:
     risk_factor = st.radio('Risk factor', df1_2['Question'].unique())
     subset_2 = subset_2[subset_2['Question'] == risk_factor]
 
-domain_min_d = np.nanmin(subset_1['Rate'].apply(float))
-domain_max_d = np.nanmax(subset_1['Rate'].apply(float))
+if len(subset_1 != 0):
+    domain_min_d = np.nanmin(subset_1['Rate'].apply(float))
+    domain_max_d = np.nanmax(subset_1['Rate'].apply(float))
 
-domain_min_r = np.nanmin(subset_2['Amount'].apply(float))
-domain_max_r = np.nanmax(subset_2['Amount'].apply(float))
+if len(subset_2 != 0):
+    domain_min_r = np.nanmin(subset_2['Amount'].apply(float))
+    domain_max_r = np.nanmax(subset_2['Amount'].apply(float))
 
 width = 600
 height  = 400
