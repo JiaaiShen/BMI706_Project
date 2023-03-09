@@ -6,6 +6,8 @@ Project Title: U.S. Chronic Disease Mortality Trend Map
 
 Authors: Group 415 - Ziqian Liao, Joanna Shen
 
+GitHub Repository: https://github.com/JiaaiShen/BMI706_Project.git
+
 - - -
 
 #### Step 1: Project Proposal - Dataset and Tasks
@@ -106,7 +108,7 @@ This view provides users with the convenience to compare the trends and discover
 
 Our final deliverables are presented here:
 
-* [Streamlit App - U.S. Chronic Disease Mortality Trend Map](https://jiaaishen-bmi706-project-home-3kkj64.streamlit.app/Relationship_between_Chronic_Disease_and_Risk_Factor)
+* [Streamlit App - U.S. Chronic Disease Mortality Trend Map](https://jiaaishen-bmi706-project-home-3kkj64.streamlit.app/)
 * [Demo Video - U.S. Chronic Disease Mortality Trend Map](https://github.com/JiaaiShen/BMI706_Project/blob/e6b01c739f0e8aa03ee970ffbfd80f192df0a6cd/bmi706_zl_js_video.mp4)
 
 ###### Key Observations
