@@ -119,6 +119,6 @@ else:
         y=alt.Y('Rate', type='quantitative', title='Mortality rate', scale=alt.Scale(domain=(domain_min_d, domain_max_d))),
         color=alt.Color(field='LocationDesc', type='nominal', title='State', scale=alt.Scale(scheme='blues'), legend = None),
         tooltip=[alt.Tooltip('YearStart:O', title='Year'), alt.Tooltip('LocationDesc:N', title='State'), 'Rate:Q']
-)
+    )
 
     st.altair_chart(alt.vconcat(alt.vconcat(background + chart_amount, trendline_r), trendline_d).resolve_scale(color='shared'), use_container_width = True)
