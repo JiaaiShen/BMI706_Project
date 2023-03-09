@@ -6,8 +6,8 @@ from vega_datasets import data
 
 @st.cache_data
 def load_data():    
-    df1_1 = pd.read_csv('https://github.com/JiaaiShen/BMI706_Project/blob/9dafb2d261002fcfa498aadf5050c80fd9519e8a/data/interface_1_df_1.csv?raw=true')
-    df1_2 = pd.read_csv('https://github.com/JiaaiShen/BMI706_Project/blob/9dafb2d261002fcfa498aadf5050c80fd9519e8a/data/interface_1_df_2.csv?raw=true')
+    df1_1 = pd.read_csv('https://github.com/JiaaiShen/BMI706_Project/blob/bc8924978d9285ee40d050cdd649e070c9ddf4c4/data/interface_1_df_1.csv?raw=true')
+    df1_2 = pd.read_csv('https://github.com/JiaaiShen/BMI706_Project/blob/bc8924978d9285ee40d050cdd649e070c9ddf4c4/data/interface_1_df_2.csv?raw=true')
     return df1_1, df1_2
 
 
