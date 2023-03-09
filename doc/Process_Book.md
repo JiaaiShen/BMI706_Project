@@ -104,8 +104,10 @@ This view provides users with the convenience to compare the trends and discover
 
 ### Step 3: Final Deliverables - Streamlit Apps, Process Book, and Demo Videos
 
-###### Demo Video
-[Demo Video - U.S. Chronic Disease Mortality Trend Map](addgithublink)
+Our final deliverables are presented here:
+
+* [Streamlit App - U.S. Chronic Disease Mortality Trend Map](https://jiaaishen-bmi706-project-home-3kkj64.streamlit.app/Relationship_between_Chronic_Disease_and_Risk_Factor)
+* [Demo Video - U.S. Chronic Disease Mortality Trend Map](https://github.com/JiaaiShen/BMI706_Project/blob/e6b01c739f0e8aa03ee970ffbfd80f192df0a6cd/bmi706_zl_js_video.mp4)
 
 ###### Key Observations
 
