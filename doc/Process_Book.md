@@ -10,7 +10,7 @@ Project Title: U.S. Chronic Disease Mortality Trend Map
 
 Authors: Group 415 - Ziqian Liao, Joanna Shen
 
-GitHub Repository: https://github.com/JiaaiShen/BMI706_Project.git
+GitHub Repository: https://github.com/JiaaiShen/BMI706_Project
 
 - - -
 
