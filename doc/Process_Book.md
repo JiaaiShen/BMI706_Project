@@ -1,3 +1,7 @@
+---
+output:
+  html_document: default
+---
 # Process Book
 
 #### About the Project
@@ -150,16 +154,27 @@ Our final deliverables are presented here:
 
 ###### Team Contributions
 Joanna Shen
+
 * Project Proposal Writing 
+
 * Sketch - Brainstorming
+
 * Sketch - Converged Solution
+
 * Final Deliverables - Data Cleaning
+
 * Final Deliverables - Demo #2 (Chronic Disease vs. Risk Factors)
+
 * Process Book
 
 Ziqian Liao
+
 * Project Proposal Writing 
+
 * Sketch - Brainstorming
+
 * Sketch - Initial Draft, Layout Design
+
 * Final Deliverables - Home page, Demo #1 (Stratified Chronic Disease Mortality Rates)
+
 * Process Book
